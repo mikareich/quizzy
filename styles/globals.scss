@@ -1,0 +1,11 @@
+@import './colors.scss';
+@import './typography.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: clamp(400px, 80vw, 1000px);
+  margin: 20px auto;
+}
