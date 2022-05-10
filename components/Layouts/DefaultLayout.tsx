@@ -8,7 +8,7 @@ interface DefaultLayoutProps extends MetaLayoutProps {
 }
 
 const containerStyles = css`
-  width: clamp(280px, 80vw, 1080px);
+  width: clamp(280px, 80vw, 800px);
   margin: 90px auto 0 auto;
 `
 
