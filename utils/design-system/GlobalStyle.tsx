@@ -1,6 +1,6 @@
 import React from 'react'
 import { css, Global, useTheme } from '@emotion/react'
-import { normalize } from 'polished'
+import { normalize, transparentize } from 'polished'
 
 function GlobalStyle() {
   const theme = useTheme()
@@ -14,6 +14,9 @@ function GlobalStyle() {
         * {
           box-sizing: border-box;
           transition: all 200ms ease, outline 0ms ease;
+          ::selection {
+            background-color: ${theme.colors.primaryPalete[100]};
+          }
         }
 
         html {

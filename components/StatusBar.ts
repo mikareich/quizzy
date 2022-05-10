@@ -21,4 +21,3 @@ const StatusBar = styled.div<StatusBarProps>`
 `
 
 export default StatusBar
-0
