@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import OutlineStyle from '../utils/design-system/OutlineStyle'
 
-const Input = styled.input`
+const BaseInput = styled.input`
   padding: 0px;
   border: none;
   outline: none;
@@ -51,7 +51,7 @@ interface InputProps {
   prefixIcon?: React.ReactNode
   suffixIcon?: React.ReactNode
 }
-function InputContainer({
+function Input({
   prefixIcon,
   suffixIcon,
   ...props
@@ -59,10 +59,10 @@ function InputContainer({
   return (
     <Container {...props}>
       {prefixIcon && <Prefix>{prefixIcon}</Prefix>}
-      <Input {...props} />
+      <BaseInput {...props} />
       {suffixIcon && <Suffix>{suffixIcon}</Suffix>}
     </Container>
   )
 }
 
-export default InputContainer
+export default Input
