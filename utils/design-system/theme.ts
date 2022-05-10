@@ -12,14 +12,17 @@ export interface Theme {
   colors: {
     /** Primary color */
     primary: string
+    primaryLight: string
     primaryPalete: typeof purple
     /** Secondary color */
     secondary: string
+    secondaryLight: string
     secondaryPalete: typeof purple
     /** Text color */
     text: string
     textLight: string
     textOnPrimary: string
+    textOnSecondary: string
     /** Background color */
     background: string
   }
@@ -31,12 +34,15 @@ const lightTheme: Theme = {
   typeScale: defaultTypeScale,
   colors: {
     primary: purple[500],
+    primaryLight: purple[400],
     primaryPalete: purple,
-    secondary: purple[100],
+    secondary: purple[200],
+    secondaryLight: purple[100],
     secondaryPalete: purple,
     text: gray[500],
     textLight: gray[300],
     textOnPrimary: white,
+    textOnSecondary: gray[500],
     background: white,
   },
 }
