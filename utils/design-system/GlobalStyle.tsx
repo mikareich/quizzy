@@ -20,7 +20,6 @@ function GlobalStyle() {
           background-color: ${theme.colors.background};
           color: ${theme.colors.text};
           font-family: ${theme.textFont};
-          padding: 10px;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }

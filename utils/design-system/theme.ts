@@ -1,4 +1,4 @@
-import { gray, purple, white } from './colors'
+import { gray, green, purple, red, white, yellow } from './colors'
 import { defaultTypeScale } from './typeScale'
 
 export interface Theme {
@@ -25,6 +25,10 @@ export interface Theme {
     textOnSecondary: string
     /** Background color */
     background: string
+    /** Status colors */
+    success: string
+    warning: string
+    error: string
   }
 }
 
@@ -44,6 +48,9 @@ const lightTheme: Theme = {
     textOnPrimary: white,
     textOnSecondary: gray[500],
     background: white,
+    success: green[500],
+    warning: yellow[500],
+    error: red[500],
   },
 }
 
