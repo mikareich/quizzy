@@ -36,20 +36,15 @@ export const Heading5 = styled.h5`
   font-size: ${defaultTypeScale.h5};
 `
 
-const baseTextStyle = css``
-
 export const TextLg = styled.p`
-  ${baseTextStyle}
   font-size: ${defaultTypeScale.textLg};
 `
 
 export const Text = styled.p`
-  ${baseTextStyle}
   font-size: ${defaultTypeScale.text};
 `
 
 export const TextSm = styled.p`
-  ${baseTextStyle}
   font-size: ${defaultTypeScale.textSm};
 `
 
