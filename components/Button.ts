@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import OutlineStyle from '../utils/design-system/OutlineStyle'
 import { Theme } from '../utils/design-system/theme'
 
 const primaryStyle = (theme: Theme) => css`
@@ -34,6 +35,10 @@ const Button = styled.button<ButtonProps>`
   display: flex;
   align-items: center;
   gap: 10px;
+
+  :focus {
+    ${OutlineStyle}
+  }
 
   ${(props) => props.primary && primaryStyle(props.theme)};
 

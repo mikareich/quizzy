@@ -13,12 +13,14 @@ function GlobalStyle() {
 
         * {
           box-sizing: border-box;
+          transition: all 200ms ease, outline 0ms ease;
         }
 
         html {
           background-color: ${theme.colors.background};
           color: ${theme.colors.text};
           font-family: ${theme.textFont};
+          padding: 10px;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
