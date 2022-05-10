@@ -21,7 +21,6 @@ function GlobalStyle() {
 
         html {
           background-color: ${theme.colors.background};
-          color: ${theme.colors.text};
           font-family: ${theme.textFont};
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
