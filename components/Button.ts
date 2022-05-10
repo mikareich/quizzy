@@ -23,9 +23,11 @@ const secondayStyle = (theme: Theme) => css`
 `
 
 interface ButtonProps {
-  mode: 'primary' | 'secondary'
+  primary?: boolean
+  secondary?: boolean
 }
 const Button = styled.button<ButtonProps>`
+  font-weight: bold;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
@@ -33,10 +35,11 @@ const Button = styled.button<ButtonProps>`
   align-items: center;
   gap: 10px;
 
-  ${(props) =>
-    (props.mode === 'primary' || !props.mode) && primaryStyle(props.theme)};
+  ${(props) => props.primary && primaryStyle(props.theme)};
 
-  ${(props) => props.mode === 'secondary' && secondayStyle(props.theme)};
+  ${(props) => props.secondary && secondayStyle(props.theme)};
+
+  ${(props) => !props.primary && !props.secondary && primaryStyle(props.theme)};
 `
 
 export default Button
