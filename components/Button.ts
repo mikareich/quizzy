@@ -35,6 +35,10 @@ const Button = styled.button<ButtonProps>`
   display: flex;
   align-items: center;
   gap: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 48px;
 
   :focus {
     ${OutlineStyle}
