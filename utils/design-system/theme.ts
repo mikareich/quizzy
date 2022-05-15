@@ -1,5 +1,5 @@
 import { gray, green, purple, red, white, yellow } from './colors'
-import { defaultTypeScale } from './typeScale'
+import { defaultTypeScale, mobileTypeScale } from './typeScale'
 
 export interface Theme {
   /** Font family of all headings */
@@ -8,6 +8,8 @@ export interface Theme {
   textFont: string
   /** Type scale */
   typeScale: typeof defaultTypeScale
+  /** Type scale for mobiles */
+  mobileTypeScale: typeof mobileTypeScale
   /** Theme colors */
   colors: {
     /** Primary color */
@@ -36,6 +38,7 @@ const lightTheme: Theme = {
   headingFont: '"Montserrat", sans-serif',
   textFont: '"Montserrat", sans-serif',
   typeScale: defaultTypeScale,
+  mobileTypeScale,
   colors: {
     primary: purple[500],
     primaryLight: purple[400],

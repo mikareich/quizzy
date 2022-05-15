@@ -1,6 +1,6 @@
-import { css, useTheme, withTheme } from '@emotion/react'
+import { css, useTheme } from '@emotion/react'
 
-const OutlineStyle = () => {
+function OutlineStyle() {
   const theme = useTheme()
 
   return css`

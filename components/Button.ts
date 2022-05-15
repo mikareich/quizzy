@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import OutlineStyle from '../utils/design-system/OutlineStyle'
 import { Theme } from '../utils/design-system/theme'
+import media from '../utils/design-system/mediaQueries'
 
 const primaryStyle = (theme: Theme) => css`
   background: ${theme.colors.primary};
@@ -30,7 +31,7 @@ interface ButtonProps {
 const Button = styled.button<ButtonProps>`
   font-weight: bold;
   border: none;
-  padding: 10px 20px;
+  padding: 5px 10px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -39,6 +40,10 @@ const Button = styled.button<ButtonProps>`
   text-overflow: ellipsis;
   white-space: nowrap;
   height: 48px;
+
+  ${media('md')} {
+    padding: 10px 20px;
+  }
 
   :focus {
     ${OutlineStyle}

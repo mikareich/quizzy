@@ -1,6 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
+import media from '../../utils/design-system/mediaQueries'
 import StatusBar from '../StatusBar'
 import MetaLayout, { MetaLayoutProps } from './MetaLayout'
 
@@ -15,7 +16,9 @@ const containerStyles = css`
 `
 
 const IllustrationContainer = styled.div`
-  @media (min-width: 1400px) {
+  display: none;
+  ${media('xl')} {
+    display: block;
     font-size: 50px;
     width: clamp(100px, 15vw, 300px);
     position: fixed;

@@ -6,14 +6,21 @@ import Image from 'next/image'
 import Button from '../components/Button'
 import Input from '../components/Input'
 import DefaultLayout from '../components/Layouts/DefaultLayout'
-import { Heading4, Heading5, Link, Text, Title } from '../components/Typography'
+import { Heading5, Link, Text, Title } from '../components/Typography'
 import UndrawQuiz from '../public/undraw_quiz.svg'
+import media from '../utils/design-system/mediaQueries'
 
 const headerStyle = css`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
+  flex-direction: column;
+
+  ${media('md')} {
+    margin-bottom: 60px;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+  }
 `
 
 const listContainerStyle = css`
@@ -21,6 +28,21 @@ const listContainerStyle = css`
   display: grid;
   justify-items: end;
   gap: 20px;
+`
+
+const inputStyle = css`
+  width: 100%;
+
+  ${media('md')} {
+    width: auto;
+  }
+`
+
+const responsiveText = css`
+  display: none;
+  ${media('md')} {
+    display: block;
+  }
 `
 
 const quizListStyle = css`
@@ -34,8 +56,12 @@ const quizItemStyle = css`
   margin-bottom: 30px;
   padding: 10px 20px;
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr auto;
+  grid-template-columns: 3fr auto;
   gap: 10px;
+
+  ${media('md')} {
+    grid-template-columns: 1fr 3fr 1fr auto;
+  }
 
   ${Text} {
     overflow: hidden;
@@ -115,6 +141,7 @@ function Home() {
       {/* Quiz List */}
       <div css={listContainerStyle}>
         <Input
+          css={inputStyle}
           prefixIcon={<Search width={24} />}
           placeholder="Search for quiz"
         />
@@ -122,8 +149,12 @@ function Home() {
           {quizzes.map((quiz) => (
             <li key={quiz.id} css={quizItemStyle}>
               <Text css={{ fontWeight: 'bold' }}>{quiz.title}</Text>
-              <Text color={theme.colors.textLight}>{quiz.description}</Text>
-              <Text>{quiz.totalNumberOfQuestions} Questions</Text>
+              <Text css={responsiveText} color={theme.colors.textLight}>
+                {quiz.description}
+              </Text>
+              <Text css={responsiveText}>
+                {quiz.totalNumberOfQuestions} Questions
+              </Text>
               <Button>
                 Start Quiz <ArrowForwardIcon width={24} />
               </Button>
