@@ -1,12 +1,14 @@
-import { css } from '@emotion/react'
+import { css, useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
+import { ColorPalette } from '../../utils/design-system/colors'
 import media from '../../utils/design-system/mediaQueries'
 import StatusBar from '../StatusBar'
 import MetaLayout, { MetaLayoutProps } from './MetaLayout'
 
 interface DefaultLayoutProps extends MetaLayoutProps {
   statusBarProgress?: number
+  colorPalette?: ColorPalette
   illustration?: React.ReactNode
 }
 
@@ -31,12 +33,17 @@ function DefaultLayout({
   title,
   description,
   statusBarProgress,
+  colorPalette = useTheme().colors.primaryPalette,
   illustration,
   children,
 }: React.PropsWithChildren<DefaultLayoutProps>) {
   return (
     <MetaLayout title={title} description={description}>
-      <StatusBar fixed progress={statusBarProgress} />
+      <StatusBar
+        colorPalette={colorPalette}
+        fixed
+        progress={statusBarProgress}
+      />
       <main css={containerStyles}>{children}</main>
       {illustration && (
         <IllustrationContainer>{illustration}</IllustrationContainer>

@@ -3,11 +3,17 @@
   https://coolors.co/00b0ff-00bfa6-f50057-536dfe-f9a826-6c63ff
 */
 
-export const white = '#ffffff'
+export type Color = string
 
-export const black = '#000000'
+export interface ColorPalette {
+  [shade: number]: Color
+}
 
-export const cyan = {
+export const white: Color = '#ffffff'
+
+export const black: Color = '#000000'
+
+export const cyan: ColorPalette = {
   100: '#ccefff',
   200: '#99dfff',
   300: '#66d0ff',
@@ -19,7 +25,7 @@ export const cyan = {
   900: '#002333',
 }
 
-export const green = {
+export const green: ColorPalette = {
   100: '#ccf2ed',
   200: '#99e5db',
   300: '#66d9ca',
@@ -31,7 +37,7 @@ export const green = {
   900: '#002621',
 }
 
-export const red = {
+export const red: ColorPalette = {
   100: '#fdccdd',
   200: '#fb99bc',
   300: '#f9669a',
@@ -43,7 +49,7 @@ export const red = {
   900: '#310011',
 }
 
-export const blue = {
+export const blue: ColorPalette = {
   100: '#dde2ff',
   200: '#bac5ff',
   300: '#98a7fe',
@@ -55,7 +61,7 @@ export const blue = {
   900: '#111633',
 }
 
-export const yellow = {
+export const yellow: ColorPalette = {
   100: '#feeed4',
   200: '#fddca8',
   300: '#fbcb7d',
@@ -67,7 +73,7 @@ export const yellow = {
   900: '#322208',
 }
 
-export const purple = {
+export const purple: ColorPalette = {
   100: '#e2e0ff',
   200: '#c4c1ff',
   300: '#a7a1ff',
@@ -79,7 +85,7 @@ export const purple = {
   900: '#161433',
 }
 
-export const gray = {
+export const gray: ColorPalette = {
   100: '#d5d5d9',
   200: '#acabb3',
   300: '#82828d',

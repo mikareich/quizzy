@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import { ColorPalette } from '../utils/design-system/colors'
 
 const fixedStyle = css`
   position: fixed;
@@ -8,12 +9,17 @@ const fixedStyle = css`
 interface StatusBarProps {
   progress?: number
   fixed?: boolean
+  colorPalette?: ColorPalette
 }
+
 const StatusBar = styled.div<StatusBarProps>`
   width: 100%;
   height: 10px;
   position: relative;
-  background-color: ${({ theme }) => theme.colors.primaryPalete[100]};
+  background-color: ${(props) =>
+    (props.colorPalette
+      ? props.colorPalette
+      : props.theme.colors.primaryPalette)[100]};
 
   ${(props) => props.fixed && fixedStyle}
 
@@ -24,7 +30,10 @@ const StatusBar = styled.div<StatusBarProps>`
     content: '';
     width: ${(props) => props.progress || 100}%;
     height: 10px;
-    background-color: ${(props) => props.theme.colors.primary};
+    background-color: ${(props) =>
+      props.colorPalette
+        ? props.colorPalette[500]
+        : props.theme.colors.primary};
   }
 `
 

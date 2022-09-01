@@ -1,4 +1,13 @@
-import { gray, green, purple, red, white, yellow } from './colors'
+import {
+  Color,
+  ColorPalette,
+  gray,
+  green,
+  purple,
+  red,
+  white,
+  yellow,
+} from './colors'
 import { defaultTypeScale, mobileTypeScale } from './typeScale'
 
 export interface Theme {
@@ -13,24 +22,24 @@ export interface Theme {
   /** Theme colors */
   colors: {
     /** Primary color */
-    primary: string
-    primaryLight: string
-    primaryPalete: typeof purple
+    primary: Color
+    primaryLight: Color
+    primaryPalette: ColorPalette
     /** Secondary color */
-    secondary: string
-    secondaryLight: string
-    secondaryPalete: typeof purple
+    secondary: Color
+    secondaryLight: Color
+    secondaryPalette: ColorPalette
     /** Text color */
-    text: string
-    textLight: string
-    textOnPrimary: string
-    textOnSecondary: string
+    text: Color
+    textLight: Color
+    textOnPrimary: Color
+    textOnSecondary: Color
     /** Background color */
-    background: string
+    background: Color
     /** Status colors */
-    success: string
-    warning: string
-    error: string
+    success: Color
+    warning: Color
+    error: Color
   }
 }
 
@@ -42,10 +51,10 @@ const lightTheme: Theme = {
   colors: {
     primary: purple[500],
     primaryLight: purple[400],
-    primaryPalete: purple,
+    primaryPalette: purple,
     secondary: purple[200],
     secondaryLight: purple[100],
-    secondaryPalete: purple,
+    secondaryPalette: purple,
     text: gray[500],
     textLight: gray[300],
     textOnPrimary: white,

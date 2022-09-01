@@ -20,6 +20,10 @@ export const Title = styled.h1<TypographyProps>`
   ${baseStyle}
 `
 
+export const Subtitle = styled.p<TypographyProps>`
+  color: ${(props) => props.theme.colors.textLight};
+`
+
 const headingStyle = css`
   font-weight: 500;
   line-height: 1.5;

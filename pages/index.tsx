@@ -1,27 +1,16 @@
 import { css, useTheme } from '@emotion/react'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import Search from '@mui/icons-material/Search'
-import React from 'react'
 import Image from 'next/image'
+import React from 'react'
+
 import Button from '../components/Button'
 import Input from '../components/Input'
 import DefaultLayout from '../components/Layouts/DefaultLayout'
-import { Heading5, Link, Text, Title } from '../components/Typography'
+import Header from '../components/Layouts/Header'
+import { Heading5, Link, Subtitle, Text, Title } from '../components/Typography'
 import UndrawQuiz from '../public/undraw_quiz.svg'
 import media from '../utils/design-system/mediaQueries'
-
-const headerStyle = css`
-  display: flex;
-  margin-bottom: 30px;
-  flex-direction: column;
-
-  ${media('md')} {
-    margin-bottom: 60px;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-  }
-`
 
 const listContainerStyle = css`
   margin-top: 75px;
@@ -120,9 +109,9 @@ function Home() {
       description=""
     >
       {/* Header */}
-      <header css={headerStyle}>
+      <Header>
         <Title css={{ margin: '0px' }}>Quizzy</Title>
-        <Text color={theme.colors.textLight}>
+        <Subtitle as={Text}>
           created by{' '}
           <Link
             color={theme.colors.textLight}
@@ -130,14 +119,16 @@ function Home() {
           >
             @mikareich
           </Link>
-        </Text>
-      </header>
+        </Subtitle>
+      </Header>
+
       {/* Hero Text */}
-      <Heading5 color={theme.colors.textLight}>
+      <Subtitle as={Heading5}>
         Play fun little quizzes and test your knowledge about various topics.
         You even can create your <Link href="/new">own custom quizzes</Link> and
         share them with others.
-      </Heading5>
+      </Subtitle>
+
       {/* Quiz List */}
       <div css={listContainerStyle}>
         <Input

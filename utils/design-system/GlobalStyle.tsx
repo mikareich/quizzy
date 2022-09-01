@@ -14,7 +14,7 @@ function GlobalStyle() {
           box-sizing: border-box;
           transition: all 200ms ease, outline 0ms ease;
           ::selection {
-            background-color: ${theme.colors.primaryPalete[100]};
+            background-color: ${theme.colors.primaryPalette[100]};
           }
         }
 

@@ -1,5 +1,7 @@
-import React from 'react'
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import React from 'react'
+
 import OutlineStyle from '../utils/design-system/OutlineStyle'
 
 const BaseInput = styled.input`
@@ -14,20 +16,35 @@ const BaseInput = styled.input`
   }
 `
 
-const Affix = styled.div`
+const affixStyle = css`
   display: flex;
   align-items: center;
   justify-content: center;
 `
-const Prefix = Affix.withComponent('div')
-const Suffix = Affix.withComponent('div')
+
+const Prefix = styled.div`
+  ${affixStyle}
+`
+
+const Suffix = styled.button`
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+
+  :focus {
+    ${OutlineStyle}
+  }
+
+  ${affixStyle}
+`
 
 const Container = styled.div`
   padding: 10px 20px;
   display: flex;
   align-items: center;
   width: fit-content;
-  border-bottom: 2px solid ${(props) => props.theme.colors.primary};
+  border-bottom: 2px solid ${(props) => props.theme.colors.primaryLight};
   gap: 10px;
 
   ${Prefix}, ${Suffix} {
@@ -36,13 +53,14 @@ const Container = styled.div`
 
   :hover,
   :focus-within {
-    ${Prefix} {
-      color: ${(props) => props.theme.colors.primary};
-    }
-    border-color: ${(props) => props.theme.colors.primaryLight};
+    border-color: ${(props) => props.theme.colors.primary};
   }
 
   :focus-within {
+    ${Prefix} {
+      color: ${(props) => props.theme.colors.primary};
+    }
+
     ${OutlineStyle}
   }
 `
@@ -54,13 +72,25 @@ interface InputProps {
 function Input({
   prefixIcon,
   suffixIcon,
+  type,
   ...props
 }: InputProps & React.InputHTMLAttributes<HTMLInputElement>) {
+  const [showPassword, setShowPassword] = React.useState(false)
+
+  const toggleVisibilty = () => setShowPassword(!showPassword)
+
   return (
     <Container {...props}>
       {prefixIcon && <Prefix>{prefixIcon}</Prefix>}
-      <BaseInput {...props} />
-      {suffixIcon && <Suffix>{suffixIcon}</Suffix>}
+      <BaseInput
+        {...props}
+        type={type === 'password' && showPassword ? 'text' : type}
+      />
+      {suffixIcon && (
+        <Suffix type="button" onClick={toggleVisibilty}>
+          {suffixIcon}
+        </Suffix>
+      )}
     </Container>
   )
 }
