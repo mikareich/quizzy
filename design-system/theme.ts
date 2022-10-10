@@ -9,6 +9,7 @@ import {
   yellow,
 } from './colors'
 import { defaultTypeScale, mobileTypeScale } from './typeScale'
+import { bodyFont, headingFont } from './typography'
 
 export interface Theme {
   /** Font family of all headings */
@@ -34,6 +35,8 @@ export interface Theme {
     textLight: Color
     textOnPrimary: Color
     textOnSecondary: Color
+    /** Border color */
+    border: Color
     /** Background color */
     background: Color
     /** Status colors */
@@ -44,8 +47,8 @@ export interface Theme {
 }
 
 const lightTheme: Theme = {
-  headingFont: '"Montserrat", sans-serif',
-  textFont: '"Montserrat", sans-serif',
+  headingFont,
+  textFont: bodyFont,
   typeScale: defaultTypeScale,
   mobileTypeScale,
   colors: {
@@ -59,6 +62,7 @@ const lightTheme: Theme = {
     textLight: gray[300],
     textOnPrimary: white,
     textOnSecondary: gray[500],
+    border: gray[100],
     background: white,
     success: green[500],
     warning: yellow[500],

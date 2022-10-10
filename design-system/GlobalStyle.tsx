@@ -1,6 +1,6 @@
-import React from 'react'
-import { css, Global, useTheme } from '@emotion/react'
+import { Global, css, useTheme } from '@emotion/react'
 import { normalize } from 'polished'
+import React from 'react'
 
 function GlobalStyle() {
   const theme = useTheme()

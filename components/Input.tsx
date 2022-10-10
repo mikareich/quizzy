@@ -1,8 +1,8 @@
+import OutlineStyle from '@design-system/OutlineStyle'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
-
-import OutlineStyle from '../utils/design-system/OutlineStyle'
+import { MdVisibility, MdVisibilityOff } from 'react-icons/md'
 
 const BaseInput = styled.input`
   padding: 0px;
@@ -71,10 +71,11 @@ interface InputProps {
 }
 function Input({
   prefixIcon,
-  suffixIcon,
   type,
   ...props
 }: InputProps & React.InputHTMLAttributes<HTMLInputElement>) {
+  const isPassword = type === 'password'
+
   const [showPassword, setShowPassword] = React.useState(false)
 
   const toggleVisibilty = () => setShowPassword(!showPassword)
@@ -82,13 +83,14 @@ function Input({
   return (
     <Container {...props}>
       {prefixIcon && <Prefix>{prefixIcon}</Prefix>}
-      <BaseInput
-        {...props}
-        type={type === 'password' && showPassword ? 'text' : type}
-      />
-      {suffixIcon && (
+      <BaseInput {...props} type={isPassword && showPassword ? 'text' : type} />
+      {isPassword && (
         <Suffix type="button" onClick={toggleVisibilty}>
-          {suffixIcon}
+          {showPassword ? (
+            <MdVisibilityOff size={24} />
+          ) : (
+            <MdVisibility size={24} />
+          )}
         </Suffix>
       )}
     </Container>

@@ -1,115 +1,171 @@
+import OutlineStyle from '@design-system/OutlineStyle'
+import media from '@design-system/mediaQueries'
+import { DynamicStyle, propertyDefined } from '@design-system/propertyUtils'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import OutlineStyle from '../utils/design-system/OutlineStyle'
-import media from '../utils/design-system/mediaQueries'
+import React from 'react'
 
 interface TypographyProps {
   color?: string
+  bold?: boolean
+  italic?: boolean
+  underline?: boolean
+  strikethrough?: boolean
+  subtitle?: boolean
+  truncate?: boolean
 }
 
-const baseStyle = (props: any) => css`
-  color: ${props.color || props.theme.colors.text};
-`
+const isMobile = () => media.lessThan('md')
 
-export const Title = styled.h1<TypographyProps>`
-  font-size: ${(props) => props.theme.mobileTypeScale.title};
-
-  ${media('md')} {
-    font-size: ${(props) => props.theme.typeScale.title};
-  }
-  ${baseStyle}
-`
-
-export const Subtitle = styled.p<TypographyProps>`
-  color: ${(props) => props.theme.colors.textLight};
-`
-
-const headingStyle = css`
+const headingStyle: DynamicStyle<TypographyProps> = ({ color, theme }) => css`
+  color: ${color || theme?.colors.text};
+  font-family: ${theme?.headingFont};
   font-weight: 500;
   line-height: 1.5;
 `
 
-export const Heading1 = styled.h1<TypographyProps>`
-  font-size: ${(props) => props.theme.mobileTypeScale.h1};
+const textStyle: DynamicStyle<TypographyProps> = ({ color, theme }) => css`
+  color: ${color || theme?.colors.text};
+  font-family: ${theme?.textFont};
+`
 
-  ${media('md')} {
-    font-size: ${(props) => props.theme.typeScale.h1};
+const baseStyle: DynamicStyle<TypographyProps> = ({
+  bold,
+  italic,
+  underline,
+  strikethrough,
+  subtitle,
+  truncate,
+  theme,
+}) => css`
+  line-height: normal;
+
+  svg {
+    vertical-align: middle;
   }
+
+  ${bold && 'font-weight: bold;'}
+  ${italic && 'font-style: italic;'}
+  ${underline && 'text-decoration: underline;'}
+  ${strikethrough && 'text-decoration: line-through;'}
+  ${truncate &&
+  'text-overflow: ellipsis; overflow: hidden; white-space: nowrap;'}
+  ${subtitle && `color: ${theme?.colors.textLight};`}
+`
+
+export const Title = styled.h1<TypographyProps>`
+  ${headingStyle};
+  ${baseStyle}
+
+  font-size: ${(props) => props.theme?.typeScale.title};
+  font-weight: 700;
+  ${isMobile} {
+    font-size: ${(props) => props.theme?.mobileTypeScale.title};
+  }
+`
+
+export const Heading1 = styled.h1<TypographyProps>`
   ${headingStyle}
   ${baseStyle}
+
+  font-size: ${(props) => props.theme?.typeScale.h1};
+  ${isMobile} {
+    font-size: ${(props) => props.theme?.mobileTypeScale.h1};
+  }
 `
 
 export const Heading2 = styled.h2<TypographyProps>`
-  font-size: ${(props) => props.theme.mobileTypeScale.h2};
-
-  ${media('md')} {
-    font-size: ${(props) => props.theme.typeScale.h2};
-  }
   ${headingStyle}
   ${baseStyle}
+
+  font-size: ${(props) => props.theme?.typeScale.h2};
+  ${isMobile} {
+    font-size: ${(props) => props.theme?.mobileTypeScale.h2};
+  }
 `
 
 export const Heading3 = styled.h3<TypographyProps>`
-  font-size: ${(props) => props.theme.mobileTypeScale.h3};
-
-  ${media('md')} {
-    font-size: ${(props) => props.theme.typeScale.h3};
-  }
   ${headingStyle}
   ${baseStyle}
+
+  font-size: ${(props) => props.theme?.typeScale.h3};
+  ${isMobile} {
+    font-size: ${(props) => props.theme?.mobileTypeScale.h3};
+  }
 `
 
 export const Heading4 = styled.h4<TypographyProps>`
-  font-size: ${(props) => props.theme.mobileTypeScale.h4};
-
-  ${media('md')} {
-    font-size: ${(props) => props.theme.typeScale.h4};
-  }
   ${headingStyle}
   ${baseStyle}
+
+  font-size: ${(props) => props.theme?.typeScale.h4};
+
+  ${isMobile} {
+    font-size: ${(props) => props.theme?.mobileTypeScale.h4};
+  }
 `
 
 export const Heading5 = styled.h5<TypographyProps>`
-  font-size: ${(props) => props.theme.mobileTypeScale.h5};
-
-  ${media('md')} {
-    font-size: ${(props) => props.theme.typeScale.h5};
-  }
   ${headingStyle}
   ${baseStyle}
+
+  font-size: ${(props) => props.theme?.typeScale.h5};
+
+  ${isMobile} {
+    font-size: ${(props) => props.theme?.mobileTypeScale.h5};
+  }
 `
 
 export const TextLg = styled.p<TypographyProps>`
-  font-size: ${(props) => props.theme.mobileTypeScale.textLg};
-
-  ${media('md')} {
-    font-size: ${(props) => props.theme.typeScale.textLg};
-  }
+  ${textStyle};
   ${baseStyle}
+
+  font-size: ${(props) => props.theme?.typeScale.textLg};
+  ${isMobile} {
+    font-size: ${(props) => props.theme?.mobileTypeScale.textLg};
+  }
 `
 
 export const Text = styled.p<TypographyProps>`
-  font-size: ${(props) => props.theme.mobileTypeScale.text};
-
-  ${media('md')} {
-    font-size: ${(props) => props.theme.typeScale.text};
-  }
+  ${textStyle};
   ${baseStyle}
+
+  font-size: ${(props) => props.theme?.typeScale.text};
+  ${isMobile} {
+    font-size: ${(props) => props.theme?.mobileTypeScale.text};
+  }
 `
 
 export const TextSm = styled.p<TypographyProps>`
-  font-size: ${(props) => props.theme.mobileTypeScale.textSm};
-
-  ${media('md')} {
-    font-size: ${(props) => props.theme.typeScale.textSm};
-  }
+  ${textStyle};
   ${baseStyle}
+
+  font-size: ${(props) => props.theme?.typeScale.textSm};
+  ${isMobile} {
+    font-size: ${(props) => props.theme?.mobileTypeScale.textSm};
+  }
 `
 
-export const Link = styled.a<TypographyProps>`
+export interface LinkProps
+  extends TypographyProps,
+    React.ComponentPropsWithoutRef<'a'> {
+  noUnderline?: boolean
+}
+
+export const Link = styled.a<LinkProps>`
   :focus {
     ${OutlineStyle}
   }
+
+  font-weight: 500;
+  color: ${(props) => props.color || props.theme?.colors.primary};
   ${baseStyle}
-  color: ${(props) => props.color || props.theme.colors.primary};
+
+  ${propertyDefined(
+    'noUnderline',
+    () =>
+      css`
+        text-decoration: none;
+      `
+  )}
 `
